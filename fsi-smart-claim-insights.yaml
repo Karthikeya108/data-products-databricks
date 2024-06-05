@@ -1,0 +1,59 @@
+# This Data Contract is based on the template from https://github.com/bitol-io/open-data-contract-standard
+
+# What's this data contract about?
+datasetDomain: Insurance Claims # Domain
+quantumName: Claim Insights # Data product name
+userConsumptionMode: Analytical
+version: 1.0.0 # Version (follows semantic versioning)
+status: current
+uuid: 57124865-4r99-2sd4-w23r-14722t14886u
+
+# Details
+description:
+  purpose: Table built on top of the claim_policy_accident table.
+  limitations: na
+  usage: Predict claims over time
+tenant: SmartInsuranceInc
+
+# Getting support
+productDl: data-product-dl@SmartInsurance.org
+productSlackChannel: '#data-product-help'
+productFeedbackUrl: na
+
+# Data Source Info
+sourcePlatform: Azure Databricks
+sourceSystem: Dummy Generated Data
+datasetProject: Smart Claims DB Demo
+datasetName: Claims Data
+
+kind: DataContract
+apiVersion: v2.2.2 # Standard version (follows semantic versioning, previously known as templateVersion)
+
+type: tables
+
+# Dataset, schema and quality
+dataset:
+  - table: claim_insights
+    physicalName: claim_insights_1_0_0
+    priorTableName: claim_policy_accident # if needed
+    description: Provides insight into insurance claims
+    tags: null
+    
+# Roles
+roles:
+  - role: data_engineer
+    access: write
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: Data Product Owner
+  - role: data_scientist
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: na
+  - role: data_analyst
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: na
+  - role: actuary
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: Data Product Owner
