@@ -38,6 +38,128 @@ dataset:
     priorTableName: claim_policy_accident # if needed
     description: Provides insight into insurance claims
     tags: null
+    columns:
+      - column: policy_no
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: string
+        physicalType: string
+        businessName: policy number
+        description: The policy number associated with the insurance claim
+      - column: driver_insured_relationship
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: string
+        physicalType: string
+        businessName: driver insured relationship
+        description: The relationship between the driver and the insured party
+      - column: months_as_customer
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: long
+        physicalType: long
+        businessName: months as customer
+        description: The duration of the customer's relationship with the insurance company in months
+      - column: telematics_speed
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: double
+        physicalType: double
+        businessName: telematics speed
+        description: The speed of the vehicle recorded by telematics
+      - column: DEDUCTABLE
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: int
+        physicalType: int
+        businessName: deductible amount
+        description: The deductible amount for the insurance policy
+      - column: claim_amount_total
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: long
+        physicalType: long
+        businessName: claim amount total
+        description: The total amount claimed in the insurance claim
+      - column: driver_age
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: double
+        physicalType: double
+        businessName: driver age
+        description: The age of the driver involved in the incident
+      - column: MODEL
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: string
+        physicalType: string
+        businessName: vehicle model
+        description: The model of the vehicle
+      - column: pol_issue_date
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: date
+        physicalType: date
+        businessName: policy issue date
+        description: The date when the insurance policy was issued
+      - column: pol_eff_date
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: date
+        physicalType: date
+        businessName: policy effective date
+        description: The effective date of the insurance policy
+      - column: CUST_ID
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: double
+        physicalType: double
+        businessName: customer id
+        description: The unique identifier for each customer
+      - column: BODY
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: string
+        physicalType: string
+        businessName: vehicle body type
+        description: The body type of the vehicle
+      - column: suspicious_activity
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: boolean
+        physicalType: boolean
+        businessName: suspicious activity
+        description: Indicates whether there was any suspicious activity associated with the insurance claim
+      - column: speed_check
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: string
+        physicalType: string
+        businessName: speed check
+        description: Indicates whether the recorded speed is within acceptable limits
+      - column: SUM_INSURED
+        isPrimary: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        primaryKeyPosition: -1
+        isNullable: true
+        logicalType: double
+        physicalType: double
+        businessName: Insurance sum assured
+        description: The total sum insured for the insurance policy
+
     
 # Roles
 roles:
@@ -57,3 +179,31 @@ roles:
     access: read
     firstLevelApprovers: Reporting Manager
     secondLevelApprovers: Data Product Owner
+
+# SLA
+slaProperties:
+  - property: latency # Property, see list of values in DP QoS
+    value: 4
+    unit: d # d, day, days for days; y, yr, years for years
+    column: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+  - property: generalAvailability
+    value: 2024-06-12T09:30:10-08:00
+  - property: endOfSupport
+    value: 2032-06-12T09:30:10-08:00
+  - property: endOfLife
+    value: 2042-06-12T09:30:10-08:00
+  - property: retention
+    value: 3
+    unit: y
+  - property: frequency
+    value: 1
+    valueExt: 1
+    unit: d
+  - property: timeOfAvailability
+    value: 09:00-08:00
+    driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
+  - property: timeOfAvailability
+    value: 08:00-08:00
+    driver: analytics
+
+contractCreatedTs: 2024-06-12 18:00:00
