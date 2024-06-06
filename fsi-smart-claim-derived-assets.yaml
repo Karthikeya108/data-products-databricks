@@ -1,0 +1,84 @@
+# This Data Contract is based on the template from https://github.com/bitol-io/open-data-contract-standard
+
+# What's this data contract about?
+datasetDomain: Insurance Claims # Domain
+quantumName: Claim Rule # Data product name
+userConsumptionMode: Business Decisions
+version: 1.0.0 # Version (follows semantic versioning)
+status: current
+uuid: 57124865-4r99-2sd4-w23r-14722t14864t
+
+# Details
+description:
+  purpose: Excel File built on top of the claim_Insights table.
+  limitations: na
+  usage: Understand the core rules of claim validation
+tenant: SmartInsuranceInc
+
+# Getting support
+productDl: data-product-dl@SmartInsurance.org
+productSlackChannel: '#data-product-help'
+productFeedbackUrl: na
+
+# Data Source Info
+sourcePlatform: Azure Databricks
+sourceSystem: Dummy Generated Data
+datasetProject: Smart Claims DB Demo
+datasetName: Claims Data
+
+kind: DataContract
+apiVersion: v2.2.2 # Standard version (follows semantic versioning, previously known as templateVersion)
+
+type: file
+
+# Dataset, schema and quality
+files:
+  - file: claims_rules
+    fileType: excel
+    physicalName: claims_rules_2024_06_06.xlsx
+    priorTableName: claim_insights # if needed
+    description: Provides insight into claims validation static rules
+    tags: null
+    
+# Roles
+roles:
+  - role: data_scientist
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: na
+  - role: data_analyst
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: na
+  - role: actuary
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: Data Product Owner
+
+# SLA
+slaProperties:
+  - property: latency # Property, see list of values in DP QoS
+    value: 4
+    unit: d # d, day, days for days; y, yr, years for years
+    column: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+  - property: generalAvailability
+    value: 2024-06-12T09:30:10-08:00
+  - property: endOfSupport
+    value: 2032-06-12T09:30:10-08:00
+  - property: endOfLife
+    value: 2042-06-12T09:30:10-08:00
+  - property: retention
+    value: 3
+    unit: y
+  - property: frequency
+    value: 1
+    valueExt: 1
+    unit: d
+  - property: timeOfAvailability
+    value: 09:00-08:00
+    driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
+  - property: timeOfAvailability
+    value: 08:00-08:00
+    driver: analytics
+
+contractCreatedTs: 2024-06-12 18:00:00
