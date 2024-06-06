@@ -2,7 +2,7 @@
 
 # What's this data contract about?
 datasetDomain: Insurance Claims # Domain
-quantumName: Claim Rule # Data product name
+quantumName: Claims Rules # Data product name
 userConsumptionMode: Business Decisions
 version: 1.0.0 # Version (follows semantic versioning)
 status: current
