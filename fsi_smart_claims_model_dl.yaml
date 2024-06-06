@@ -3,7 +3,7 @@
 # What's this data contract about?
 datasetDomain: Insurance Claims # Domain
 quantumName: Assess Damage Level # Data product name
-userConsumptionMode: Model predictions to assess damange level
+userConsumptionMode: Detecting Severity of Damaged Vehicle Using Accident Images
 version: 1.0.0 # Version (follows semantic versioning)
 status: current
 uuid: 57124865-4r99-2sd4-w23r-14722t14555u
